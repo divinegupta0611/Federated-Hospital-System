@@ -1,0 +1,424 @@
+/* Disease.css - Common CSS for all disease detection pages */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.disease-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #d8f3dc 0%, #f0f9f4 100%);
+}
+
+.disease-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Header Section */
+.disease-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeInDown 0.8s ease;
+}
+
+.disease-icon {
+  font-size: 5rem;
+  margin-bottom: 1rem;
+  animation: bounce 2s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.disease-title {
+  font-size: 3rem;
+  color: #2d6a4f;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+
+.accuracy-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #2d6a4f 0%, #40916c 100%);
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border-radius: 30px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 15px rgba(45, 106, 79, 0.3);
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.accuracy-label {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.accuracy-value {
+  font-size: 1.3rem;
+  font-weight: bold;
+  background: white;
+  color: #2d6a4f;
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px;
+}
+
+.disease-description {
+  font-size: 1.2rem;
+  color: #40916c;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Content Section */
+.disease-content {
+  display: grid;
+  gap: 2rem;
+}
+
+/* Prediction Form */
+.prediction-form-wrapper {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.8s ease;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-section-title {
+  font-size: 1.8rem;
+  color: #2d6a4f;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  border-bottom: 3px solid #d8f3dc;
+  padding-bottom: 0.8rem;
+}
+
+.prediction-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: 1rem;
+  color: #2d6a4f;
+  font-weight: 600;
+}
+
+.form-input,
+.form-select {
+  padding: 0.9rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #d8f3dc;
+  border-radius: 10px;
+  outline: none;
+  transition: all 0.3s ease;
+  background-color: #f9fdfb;
+  color: #2d6a4f;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: #2d6a4f;
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
+}
+
+.form-select {
+  cursor: pointer;
+}
+
+.form-input::placeholder {
+  color: #95d5b2;
+}
+
+/* Alerts */
+.alert {
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  font-size: 1rem;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.alert-error {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 2px solid #ef9a9a;
+}
+
+.alert-success {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border: 2px solid #81c784;
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn {
+  flex: 1;
+  padding: 1.1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-predict {
+  background: linear-gradient(135deg, #2d6a4f 0%, #40916c 100%);
+  color: white;
+  box-shadow: 0 5px 15px rgba(45, 106, 79, 0.3);
+}
+
+.btn-predict:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(45, 106, 79, 0.4);
+}
+
+.btn-predict:disabled {
+  background: #95d5b2;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-reset {
+  background: white;
+  color: #2d6a4f;
+  border: 2px solid #2d6a4f;
+}
+
+.btn-reset:hover {
+  background: #f0f9f4;
+  transform: translateY(-3px);
+}
+
+/* Spinner */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Result Section */
+.result-section {
+  margin-top: 2rem;
+  animation: fadeInUp 0.8s ease;
+}
+
+.result-card {
+  background: white;
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border: 3px solid;
+  transition: all 0.3s ease;
+}
+
+.result-card.positive {
+  border-color: #ef5350;
+  background: linear-gradient(135deg, #ffebee 0%, #ffffff 100%);
+}
+
+.result-card.negative {
+  border-color: #66bb6a;
+  background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);
+}
+
+.result-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  animation: scaleIn 0.5s ease;
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.result-title {
+  font-size: 2rem;
+  color: #2d6a4f;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.result-text {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.result-card.positive .result-text {
+  color: #d32f2f;
+}
+
+.result-card.negative .result-text {
+  color: #388e3c;
+}
+
+.result-probability {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.result-disclaimer {
+  font-size: 1rem;
+  color: #666;
+  background: white;
+  padding: 1rem;
+  border-radius: 10px;
+  border-left: 4px solid #2d6a4f;
+  text-align: left;
+  margin-top: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .disease-container {
+    padding: 1.5rem;
+  }
+
+  .disease-title {
+    font-size: 2.2rem;
+  }
+
+  .disease-icon {
+    font-size: 4rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .prediction-form-wrapper {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .disease-title {
+    font-size: 1.8rem;
+  }
+
+  .disease-description {
+    font-size: 1rem;
+  }
+
+  .accuracy-badge {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .form-section-title {
+    font-size: 1.4rem;
+  }
+
+  .result-card {
+    padding: 2rem;
+  }
+
+  .result-title {
+    font-size: 1.5rem;
+  }
+
+  .result-text {
+    font-size: 1.2rem;
+  }
+}
