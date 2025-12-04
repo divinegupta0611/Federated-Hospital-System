@@ -82,41 +82,7 @@ const Home = () => {
               Your health is our priority. Use our AI-powered disease detection system.
             </p>
           </div>
-          <div className="hero-image">
-            <div className="snake-logo">
-              <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="snakeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" style={{stopColor: '#2d6a4f', stopOpacity: 1}} />
-                    <stop offset="100%" style={{stopColor: '#40916c', stopOpacity: 1}} />
-                  </linearGradient>
-                </defs>
-                
-                {/* Staff */}
-                <line x1="100" y1="30" x2="100" y2="170" stroke="url(#snakeGradient)" strokeWidth="8" strokeLinecap="round"/>
-                
-                {/* Snake body */}
-                <path d="M 100 80 Q 120 90 120 110 Q 120 130 100 140 Q 80 130 80 110 Q 80 90 100 80" 
-                      fill="none" 
-                      stroke="url(#snakeGradient)" 
-                      strokeWidth="10" 
-                      strokeLinecap="round"/>
-                
-                {/* Snake head */}
-                <circle cx="100" cy="75" r="12" fill="url(#snakeGradient)"/>
-                
-                {/* Snake eyes */}
-                <circle cx="96" cy="73" r="2" fill="white"/>
-                <circle cx="104" cy="73" r="2" fill="white"/>
-                
-                {/* Medical cross on top */}
-                <g transform="translate(100, 40)">
-                  <rect x="-3" y="-12" width="6" height="24" fill="#ff6b6b" rx="2"/>
-                  <rect x="-12" y="-3" width="24" height="6" fill="#ff6b6b" rx="2"/>
-                </g>
-              </svg>
-            </div>
-          </div>
+          
         </div>
       </section>
 

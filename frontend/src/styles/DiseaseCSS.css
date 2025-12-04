@@ -1,4 +1,4 @@
-/* Disease.css - Common CSS for all disease detection pages */
+/* Disease.css - Professional Version for all disease detection pages */
 
 * {
   margin: 0;
@@ -8,86 +8,81 @@
 
 .disease-page {
   min-height: 100vh;
-  background: linear-gradient(135deg, #d8f3dc 0%, #f0f9f4 100%);
+  background: linear-gradient(135deg, #f8fffe 0%, #fafafa 100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
 }
 
 .disease-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 3rem 2rem;
 }
 
 /* Header Section */
 .disease-header {
   text-align: center;
   margin-bottom: 3rem;
-  animation: fadeInDown 0.8s ease;
+  animation: fadeInDown 0.6s ease;
 }
 
 .disease-icon {
-  font-size: 5rem;
-  margin-bottom: 1rem;
-  animation: bounce 2s ease infinite;
+  font-size: 4rem;
+  margin-bottom: 1.25rem;
+  opacity: 0.9;
+  animation: float 3s ease-in-out infinite;
 }
 
-@keyframes bounce {
+@keyframes float {
   0%, 100% {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
   }
 }
 
 .disease-title {
-  font-size: 3rem;
-  color: #2d6a4f;
-  font-weight: bold;
+  font-size: 2.5rem;
+  color: #1b4332;
+  font-weight: 700;
   margin-bottom: 1.5rem;
+  letter-spacing: -0.5px;
 }
 
 .accuracy-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  background: linear-gradient(135deg, #2d6a4f 0%, #40916c 100%);
+  gap: 0.75rem;
+  background: #2d6a4f;
   color: white;
-  padding: 0.7rem 1.5rem;
-  border-radius: 30px;
+  padding: 0.625rem 1.5rem;
+  border-radius: 8px;
   margin-bottom: 1.5rem;
-  box-shadow: 0 4px 15px rgba(45, 106, 79, 0.3);
-  animation: pulse 2s ease infinite;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.05);
-  }
+  box-shadow: 0 2px 8px rgba(45, 106, 79, 0.15);
 }
 
 .accuracy-label {
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: 500;
 }
 
 .accuracy-value {
-  font-size: 1.3rem;
-  font-weight: bold;
+  font-size: 1.125rem;
+  font-weight: 700;
   background: white;
   color: #2d6a4f;
-  padding: 0.2rem 0.8rem;
-  border-radius: 20px;
+  padding: 0.25rem 0.875rem;
+  border-radius: 6px;
+  letter-spacing: 0.3px;
 }
 
 .disease-description {
-  font-size: 1.2rem;
-  color: #40916c;
+  font-size: 1.0625rem;
+  color: #52796f;
   max-width: 700px;
   margin: 0 auto;
-  line-height: 1.6;
+  line-height: 1.7;
+  font-weight: 400;
 }
 
 /* Content Section */
@@ -99,16 +94,17 @@
 /* Prediction Form */
 .prediction-form-wrapper {
   background: white;
-  border-radius: 20px;
+  border-radius: 12px;
   padding: 2.5rem;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-  animation: fadeInUp 0.8s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+  animation: fadeInUp 0.6s ease;
 }
 
 @keyframes fadeInDown {
   from {
     opacity: 0;
-    transform: translateY(-30px);
+    transform: translateY(-20px);
   }
   to {
     opacity: 1;
@@ -119,7 +115,7 @@
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
@@ -128,12 +124,13 @@
 }
 
 .form-section-title {
-  font-size: 1.8rem;
-  color: #2d6a4f;
+  font-size: 1.5rem;
+  color: #1b4332;
   margin-bottom: 2rem;
   font-weight: 600;
-  border-bottom: 3px solid #d8f3dc;
-  padding-bottom: 0.8rem;
+  letter-spacing: -0.3px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 0.75rem;
 }
 
 .prediction-form {
@@ -155,45 +152,58 @@
 }
 
 .form-label {
-  font-size: 1rem;
-  color: #2d6a4f;
+  font-size: 0.9375rem;
+  color: #1b4332;
   font-weight: 600;
+  letter-spacing: 0.2px;
 }
 
 .form-input,
 .form-select {
-  padding: 0.9rem 1rem;
-  font-size: 1rem;
-  border: 2px solid #d8f3dc;
-  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
   outline: none;
-  transition: all 0.3s ease;
-  background-color: #f9fdfb;
-  color: #2d6a4f;
+  transition: all 0.2s ease;
+  background-color: #fafafa;
+  color: #1b4332;
+  font-family: inherit;
 }
 
 .form-input:focus,
 .form-select:focus {
   border-color: #2d6a4f;
   background-color: white;
-  box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
+  box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.08);
+}
+
+.form-input:hover,
+.form-select:hover {
+  border-color: #b0b0b0;
 }
 
 .form-select {
   cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%231b4332' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 2.5rem;
 }
 
 .form-input::placeholder {
-  color: #95d5b2;
+  color: #9e9e9e;
 }
 
 /* Alerts */
 .alert {
-  padding: 1rem;
-  border-radius: 10px;
+  padding: 0.875rem 1.125rem;
+  border-radius: 8px;
   margin-bottom: 1.5rem;
-  font-size: 1rem;
+  font-size: 0.9375rem;
   animation: slideIn 0.3s ease;
+  font-weight: 500;
 }
 
 @keyframes slideIn {
@@ -208,15 +218,15 @@
 }
 
 .alert-error {
-  background-color: #ffebee;
-  color: #c62828;
-  border: 2px solid #ef9a9a;
+  background-color: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
 }
 
 .alert-success {
-  background-color: #e8f5e9;
-  color: #2e7d32;
-  border: 2px solid #81c784;
+  background-color: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
 }
 
 /* Form Actions */
@@ -228,55 +238,68 @@
 
 .btn {
   flex: 1;
-  padding: 1.1rem 2rem;
-  font-size: 1.1rem;
+  padding: 0.875rem 1.75rem;
+  font-size: 1rem;
   font-weight: 600;
   border: none;
-  border-radius: 10px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  letter-spacing: 0.3px;
+  font-family: inherit;
 }
 
 .btn-predict {
-  background: linear-gradient(135deg, #2d6a4f 0%, #40916c 100%);
+  background: #2d6a4f;
   color: white;
-  box-shadow: 0 5px 15px rgba(45, 106, 79, 0.3);
+  box-shadow: 0 1px 3px rgba(45, 106, 79, 0.15);
 }
 
 .btn-predict:hover:not(:disabled) {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(45, 106, 79, 0.4);
+  background: #1b4332;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(45, 106, 79, 0.2);
+}
+
+.btn-predict:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .btn-predict:disabled {
-  background: #95d5b2;
+  background: #9e9e9e;
   cursor: not-allowed;
   box-shadow: none;
+  opacity: 0.7;
 }
 
 .btn-reset {
   background: white;
   color: #2d6a4f;
-  border: 2px solid #2d6a4f;
+  border: 1px solid #e0e0e0;
 }
 
 .btn-reset:hover {
-  background: #f0f9f4;
-  transform: translateY(-3px);
+  background: #fafafa;
+  border-color: #2d6a4f;
+  transform: translateY(-1px);
+}
+
+.btn-reset:active {
+  transform: translateY(0);
 }
 
 /* Spinner */
 .spinner {
-  width: 20px;
-  height: 20px;
-  border: 3px solid rgba(255, 255, 255, 0.3);
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-top-color: white;
   border-radius: 50%;
-  animation: spin 0.8s linear infinite;
+  animation: spin 0.6s linear infinite;
 }
 
 @keyframes spin {
@@ -288,95 +311,100 @@
 /* Result Section */
 .result-section {
   margin-top: 2rem;
-  animation: fadeInUp 0.8s ease;
+  animation: fadeInUp 0.6s ease;
 }
 
 .result-card {
   background: white;
-  border-radius: 20px;
-  padding: 3rem;
+  border-radius: 12px;
+  padding: 2.5rem;
   text-align: center;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-  border: 3px solid;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  border: 2px solid;
   transition: all 0.3s ease;
 }
 
 .result-card.positive {
-  border-color: #ef5350;
-  background: linear-gradient(135deg, #ffebee 0%, #ffffff 100%);
+  border-color: #ef4444;
+  background: linear-gradient(135deg, #fef2f2 0%, #ffffff 100%);
 }
 
 .result-card.negative {
-  border-color: #66bb6a;
-  background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%);
+  border-color: #10b981;
+  background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
 }
 
 .result-icon {
-  font-size: 4rem;
-  margin-bottom: 1.5rem;
-  animation: scaleIn 0.5s ease;
+  font-size: 3.5rem;
+  margin-bottom: 1.25rem;
+  animation: scaleIn 0.4s ease;
 }
 
 @keyframes scaleIn {
   from {
-    transform: scale(0);
+    transform: scale(0.5);
+    opacity: 0;
   }
   to {
     transform: scale(1);
+    opacity: 1;
   }
 }
 
 .result-title {
-  font-size: 2rem;
-  color: #2d6a4f;
-  font-weight: bold;
+  font-size: 1.75rem;
+  color: #1b4332;
+  font-weight: 700;
   margin-bottom: 1rem;
+  letter-spacing: -0.3px;
 }
 
 .result-text {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.2px;
 }
 
 .result-card.positive .result-text {
-  color: #d32f2f;
+  color: #dc2626;
 }
 
 .result-card.negative .result-text {
-  color: #388e3c;
+  color: #059669;
 }
 
 .result-probability {
-  font-size: 1.2rem;
-  color: #666;
+  font-size: 1.0625rem;
+  color: #6c757d;
   margin-bottom: 1.5rem;
   font-weight: 500;
 }
 
 .result-disclaimer {
-  font-size: 1rem;
-  color: #666;
-  background: white;
-  padding: 1rem;
-  border-radius: 10px;
-  border-left: 4px solid #2d6a4f;
+  font-size: 0.9375rem;
+  color: #6c757d;
+  background: #fafafa;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  border-left: 3px solid #2d6a4f;
   text-align: left;
   margin-top: 1.5rem;
+  line-height: 1.6;
 }
 
 /* Responsive Design */
 @media (max-width: 968px) {
   .disease-container {
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
   }
 
   .disease-title {
-    font-size: 2.2rem;
+    font-size: 2rem;
   }
 
   .disease-icon {
-    font-size: 4rem;
+    font-size: 3.5rem;
   }
 
   .form-row {
@@ -388,30 +416,43 @@
   }
 
   .prediction-form-wrapper {
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
   }
 }
 
 @media (max-width: 640px) {
+  .disease-container {
+    padding: 1.5rem 1rem;
+  }
+
   .disease-title {
-    font-size: 1.8rem;
+    font-size: 1.75rem;
   }
 
   .disease-description {
     font-size: 1rem;
   }
 
+  .disease-icon {
+    font-size: 3rem;
+  }
+
   .accuracy-badge {
     flex-direction: column;
-    gap: 0.3rem;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
   }
 
   .form-section-title {
-    font-size: 1.4rem;
+    font-size: 1.25rem;
+  }
+
+  .prediction-form-wrapper {
+    padding: 1.5rem 1rem;
   }
 
   .result-card {
-    padding: 2rem;
+    padding: 2rem 1.5rem;
   }
 
   .result-title {
@@ -419,6 +460,37 @@
   }
 
   .result-text {
-    font-size: 1.2rem;
+    font-size: 1.125rem;
   }
+
+  .result-icon {
+    font-size: 3rem;
+  }
+}
+
+/* Additional Professional Touches */
+.form-input:disabled,
+.form-select:disabled {
+  background-color: #f5f5f5;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-group:focus-within .form-label {
+  color: #2d6a4f;
+}
+
+/* Smooth transitions for all interactive elements */
+button,
+input,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Enhanced focus states for accessibility */
+.btn:focus-visible,
+.form-input:focus-visible,
+.form-select:focus-visible {
+  outline: 2px solid #2d6a4f;
+  outline-offset: 2px;
 }
