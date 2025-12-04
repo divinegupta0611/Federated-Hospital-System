@@ -45,7 +45,7 @@ const Diabetes = () => {
 
     try {
       // Send data to Django backend
-      const response = await fetch('YOUR_DJANGO_BACKEND_URL/api/predict/diabetes/', {
+      const response = await fetch('http://localhost:8000/api/predict/diabetes/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -27,6 +27,7 @@ const Home = () => {
       name: 'Diabetes Detection',
       icon: '🩺',
       path: '/diabetes-detection',
+      contributePath: '/contribute-diabetes',
       gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
     },
     {
@@ -34,6 +35,7 @@ const Home = () => {
       name: 'Heart Disease Detection',
       icon: '❤️',
       path: '/heart-disease-detection',
+      contributePath: '/contribute-heart-disease',
       gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
     },
     {
@@ -41,6 +43,7 @@ const Home = () => {
       name: 'Kidney Disease Detection',
       icon: '🫘',
       path: '/kidney-disease-detection',
+      contributePath: '/contribute-kidney-disease',
       gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
     },
     {
@@ -48,6 +51,7 @@ const Home = () => {
       name: 'Parkinson Detection',
       icon: '🧠',
       path: '/parkinsson-detection',
+      contributePath: '/contribute-parkinson',
       gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'
     },
     {
@@ -55,12 +59,14 @@ const Home = () => {
       name: 'Breast Cancer Detection',
       icon: '🎗️',
       path: '/cancer-detection',
+      contributePath: '/contribute-cancer',
       gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
     }
   ];
 
-  const handleCardClick = (path) => {
-    navigate(path);
+  const handleCardClick = (card) => {
+    const targetPath = user?.role === 'hospital' ? card.contributePath : card.path;
+    navigate(targetPath);
   };
 
   return (
@@ -125,13 +131,15 @@ const Home = () => {
               <div 
                 key={card.id} 
                 className="disease-card"
-                onClick={() => handleCardClick(card.path)}
+                onClick={() => handleCardClick(card)}
               >
                 <div className="card-icon" style={{background: card.gradient}}>
                   <span>{card.icon}</span>
                 </div>
                 <h3 className="card-title">{card.name}</h3>
-                <button className="card-btn">Get Started →</button>
+                <button className="card-btn">
+                  {user?.role === 'hospital' ? 'Contribute →' : 'Get Started →'}
+                </button>
               </div>
             ))}
           </div>

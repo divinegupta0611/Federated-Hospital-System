@@ -4,6 +4,7 @@ import '../styles/DiseaseCSS.css';
 
 const Kidney = () => {
   const [formData, setFormData] = useState({
+    age: '',
     bp: '',
     sg: '',
     al: '',
@@ -48,7 +49,7 @@ const Kidney = () => {
     setResult(null);
 
     // Validation
-    if (!formData.bp || !formData.sg || !formData.al || !formData.su || 
+    if (!formData.age || !formData.bp || !formData.sg || !formData.al || !formData.su || 
         !formData.rbc || !formData.pc || !formData.pcc || !formData.ba || 
         !formData.bgr || !formData.bu || !formData.sc || !formData.sod || 
         !formData.pot || !formData.hemo || !formData.pcv || !formData.wc || 
@@ -62,20 +63,21 @@ const Kidney = () => {
 
     try {
       // Send data to Django backend
-      const response = await fetch('YOUR_DJANGO_BACKEND_URL/api/predict/kidney/', {
+      const response = await fetch('http://localhost:8000/api/predict/kidney-disease/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          age: parseFloat(formData.age),
           bp: parseFloat(formData.bp),
           sg: parseFloat(formData.sg),
           al: parseInt(formData.al),
           su: parseInt(formData.su),
-          rbc: parseInt(formData.rbc),
-          pc: parseInt(formData.pc),
-          pcc: parseInt(formData.pcc),
-          ba: parseInt(formData.ba),
+          rbc: formData.rbc,
+          pc: formData.pc,
+          pcc: formData.pcc,
+          ba: formData.ba,
           bgr: parseFloat(formData.bgr),
           bu: parseFloat(formData.bu),
           sc: parseFloat(formData.sc),
@@ -85,12 +87,12 @@ const Kidney = () => {
           pcv: parseFloat(formData.pcv),
           wc: parseFloat(formData.wc),
           rc: parseFloat(formData.rc),
-          htn: parseInt(formData.htn),
-          dm: parseInt(formData.dm),
-          cad: parseInt(formData.cad),
-          appet: parseInt(formData.appet),
-          pe: parseInt(formData.pe),
-          ane: parseInt(formData.ane)
+          htn: formData.htn,
+          dm: formData.dm,
+          cad: formData.cad,
+          appet: formData.appet,
+          pe: formData.pe,
+          ane: formData.ane
         })
       });
 
@@ -110,6 +112,7 @@ const Kidney = () => {
 
   const handleReset = () => {
     setFormData({
+      age: '',
       bp: '',
       sg: '',
       al: '',
@@ -164,8 +167,23 @@ const Kidney = () => {
             {error && <div className="alert alert-error">{error}</div>}
             
             <div className="prediction-form">
-              {/* Blood Pressure & Specific Gravity */}
+              {/* Age & Blood Pressure */}
               <div className="form-row">
+                <div className="form-group">
+                  <label className="form-label">Age *</label>
+                  <input
+                    type="number"
+                    name="age"
+                    value={formData.age}
+                    onChange={handleChange}
+                    className="form-input"
+                    placeholder="Enter age"
+                    min="1"
+                    max="120"
+                    required
+                  />
+                </div>
+
                 <div className="form-group">
                   <label className="form-label">Blood Pressure (BP) *</label>
                   <input
@@ -180,7 +198,10 @@ const Kidney = () => {
                     required
                   />
                 </div>
+              </div>
 
+              {/* Specific Gravity & Albumin */}
+              <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Specific Gravity (SG) *</label>
                   <input
@@ -196,10 +217,7 @@ const Kidney = () => {
                     required
                   />
                 </div>
-              </div>
 
-              {/* Albumin & Sugar */}
-              <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Albumin (AL) *</label>
                   <select
@@ -218,7 +236,10 @@ const Kidney = () => {
                     <option value="5">5</option>
                   </select>
                 </div>
+              </div>
 
+              {/* Sugar & Red Blood Cells */}
+              <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Sugar (SU) *</label>
                   <select
@@ -237,10 +258,7 @@ const Kidney = () => {
                     <option value="5">5</option>
                   </select>
                 </div>
-              </div>
 
-              {/* Red Blood Cells & Pus Cells */}
-              <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Red Blood Cells (RBC) *</label>
                   <select
@@ -251,11 +269,14 @@ const Kidney = () => {
                     required
                   >
                     <option value="">Select RBC</option>
-                    <option value="0">Normal (0)</option>
-                    <option value="1">Abnormal (1)</option>
+                    <option value="abnormal">Abnormal</option>
+                    <option value="normal">Normal</option>
                   </select>
                 </div>
+              </div>
 
+              {/* Pus Cells & Pus Cell Clumps */}
+              <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Pus Cells (PC) *</label>
                   <select
@@ -266,14 +287,11 @@ const Kidney = () => {
                     required
                   >
                     <option value="">Select Pus Cells</option>
-                    <option value="0">Normal (0)</option>
-                    <option value="1">Abnormal (1)</option>
+                    <option value="abnormal">Abnormal</option>
+                    <option value="normal">Normal</option>
                   </select>
                 </div>
-              </div>
 
-              {/* Pus Cell Clumps & Bacteria */}
-              <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Pus Cell Clumps (PCC) *</label>
                   <select
@@ -284,11 +302,14 @@ const Kidney = () => {
                     required
                   >
                     <option value="">Select PCC</option>
-                    <option value="0">Not Present (0)</option>
-                    <option value="1">Present (1)</option>
+                    <option value="notpresent">Not Present</option>
+                    <option value="present">Present</option>
                   </select>
                 </div>
+              </div>
 
+              {/* Bacteria & Blood Glucose Random */}
+              <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Bacteria (BA) *</label>
                   <select
@@ -299,14 +320,11 @@ const Kidney = () => {
                     required
                   >
                     <option value="">Select Bacteria</option>
-                    <option value="0">Not Present (0)</option>
-                    <option value="1">Present (1)</option>
+                    <option value="notpresent">Not Present</option>
+                    <option value="present">Present</option>
                   </select>
                 </div>
-              </div>
 
-              {/* Blood Glucose Random & Blood Urea */}
-              <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Blood Glucose Random (BGR) *</label>
                   <input
@@ -321,7 +339,10 @@ const Kidney = () => {
                     required
                   />
                 </div>
+              </div>
 
+              {/* Blood Urea & Serum Creatinine */}
+              <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Blood Urea (BU) *</label>
                   <input
@@ -337,10 +358,7 @@ const Kidney = () => {
                     required
                   />
                 </div>
-              </div>
 
-              {/* Serum Creatinine & Sodium */}
-              <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Serum Creatinine (SC) *</label>
                   <input
@@ -356,7 +374,10 @@ const Kidney = () => {
                     required
                   />
                 </div>
+              </div>
 
+              {/* Sodium & Potassium */}
+              <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Sodium (SOD) *</label>
                   <input
@@ -372,10 +393,7 @@ const Kidney = () => {
                     required
                   />
                 </div>
-              </div>
 
-              {/* Potassium & Hemoglobin */}
-              <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Potassium (POT) *</label>
                   <input
@@ -391,7 +409,10 @@ const Kidney = () => {
                     required
                   />
                 </div>
+              </div>
 
+              {/* Hemoglobin & Packed Cell Volume */}
+              <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Hemoglobin (HEMO) *</label>
                   <input
@@ -407,10 +428,7 @@ const Kidney = () => {
                     required
                   />
                 </div>
-              </div>
 
-              {/* Packed Cell Volume & White Blood Cell Count */}
-              <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Packed Cell Volume (PCV) *</label>
                   <input
@@ -426,7 +444,10 @@ const Kidney = () => {
                     required
                   />
                 </div>
+              </div>
 
+              {/* White Blood Cell Count & Red Blood Cell Count */}
+              <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">White Blood Cell Count (WC) *</label>
                   <input
@@ -441,10 +462,7 @@ const Kidney = () => {
                     required
                   />
                 </div>
-              </div>
 
-              {/* Red Blood Cell Count & Hypertension */}
-              <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Red Blood Cell Count (RC) *</label>
                   <input
@@ -460,7 +478,10 @@ const Kidney = () => {
                     required
                   />
                 </div>
+              </div>
 
+              {/* Hypertension & Diabetes Mellitus */}
+              <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Hypertension (HTN) *</label>
                   <select
@@ -471,14 +492,11 @@ const Kidney = () => {
                     required
                   >
                     <option value="">Select Option</option>
-                    <option value="0">No (0)</option>
-                    <option value="1">Yes (1)</option>
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
                   </select>
                 </div>
-              </div>
 
-              {/* Diabetes Mellitus & Coronary Artery Disease */}
-              <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Diabetes Mellitus (DM) *</label>
                   <select
@@ -489,11 +507,14 @@ const Kidney = () => {
                     required
                   >
                     <option value="">Select Option</option>
-                    <option value="0">No (0)</option>
-                    <option value="1">Yes (1)</option>
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
                   </select>
                 </div>
+              </div>
 
+              {/* Coronary Artery Disease & Appetite */}
+              <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Coronary Artery Disease (CAD) *</label>
                   <select
@@ -504,14 +525,11 @@ const Kidney = () => {
                     required
                   >
                     <option value="">Select Option</option>
-                    <option value="0">No (0)</option>
-                    <option value="1">Yes (1)</option>
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
                   </select>
                 </div>
-              </div>
 
-              {/* Appetite & Pedal Edema */}
-              <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Appetite (APPET) *</label>
                   <select
@@ -522,11 +540,14 @@ const Kidney = () => {
                     required
                   >
                     <option value="">Select Appetite</option>
-                    <option value="0">Good (0)</option>
-                    <option value="1">Poor (1)</option>
+                    <option value="good">Good</option>
+                    <option value="poor">Poor</option>
                   </select>
                 </div>
+              </div>
 
+              {/* Pedal Edema & Anemia */}
+              <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Pedal Edema (PE) *</label>
                   <select
@@ -537,14 +558,11 @@ const Kidney = () => {
                     required
                   >
                     <option value="">Select Option</option>
-                    <option value="0">No (0)</option>
-                    <option value="1">Yes (1)</option>
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
                   </select>
                 </div>
-              </div>
 
-              {/* Anemia */}
-              <div className="form-row">
                 <div className="form-group">
                   <label className="form-label">Anemia (ANE) *</label>
                   <select
@@ -555,8 +573,8 @@ const Kidney = () => {
                     required
                   >
                     <option value="">Select Option</option>
-                    <option value="0">No (0)</option>
-                    <option value="1">Yes (1)</option>
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
                   </select>
                 </div>
               </div>
