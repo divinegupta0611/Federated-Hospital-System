@@ -4,15 +4,32 @@ import { useNavigate } from 'react-router-dom';
 import NavBar from '../components/NavBar';
 import '../styles/HomeCSS.css';
 
+// Import images from assets folder
+import diabetesIcon from '../assets/diabetes-logo.png';
+import heartIcon from '../assets/heart-logo.png';
+import kidneyIcon from '../assets/kidney-logo.png';
+import parkinsonIcon from '../assets/parkinson-logo.png';
+import cancerIcon from '../assets/breast-cancer-logo.png';
+
 const Home = () => {
   const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     // Get user data from localStorage
     const storedUser = localStorage.getItem('fhs_user');
     if (storedUser) {
-      setUser(JSON.parse(storedUser));
+      try {
+        const parsedUser = JSON.parse(storedUser);
+        setUser(parsedUser);
+        setIsAuthenticated(true);
+      } catch (error) {
+        console.error('Error parsing user data:', error);
+        setIsAuthenticated(false);
+      }
+    } else {
+      setIsAuthenticated(false);
     }
   }, []);
 
@@ -25,7 +42,7 @@ const Home = () => {
     {
       id: 1,
       name: 'Diabetes Detection',
-      icon: '🩺',
+      image: diabetesIcon,
       path: '/diabetes-detection',
       contributePath: '/contribute-diabetes',
       gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
@@ -33,7 +50,7 @@ const Home = () => {
     {
       id: 2,
       name: 'Heart Disease Detection',
-      icon: '❤️',
+      image: heartIcon,
       path: '/heart-disease-detection',
       contributePath: '/contribute-heart-disease',
       gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
@@ -41,7 +58,7 @@ const Home = () => {
     {
       id: 3,
       name: 'Kidney Disease Detection',
-      icon: '🫘',
+      image: kidneyIcon,
       path: '/kidney-disease-detection',
       contributePath: '/contribute-kidney-disease',
       gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
@@ -49,7 +66,7 @@ const Home = () => {
     {
       id: 4,
       name: 'Parkinson Detection',
-      icon: '🧠',
+      image: parkinsonIcon,
       path: '/parkinsson-detection',
       contributePath: '/contribute-parkinson',
       gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'
@@ -57,7 +74,7 @@ const Home = () => {
     {
       id: 5,
       name: 'Breast Cancer Detection',
-      icon: '🎗️',
+      image: cancerIcon,
       path: '/cancer-detection',
       contributePath: '/contribute-cancer',
       gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
@@ -65,8 +82,15 @@ const Home = () => {
   ];
 
   const handleCardClick = (card) => {
+    if (!isAuthenticated) {
+      return; // Do nothing if not authenticated
+    }
     const targetPath = user?.role === 'hospital' ? card.contributePath : card.path;
     navigate(targetPath);
+  };
+
+  const handleSignUpClick = () => {
+    navigate('/signup');
   };
 
   return (
@@ -82,7 +106,6 @@ const Home = () => {
               Your health is our priority. Use our AI-powered disease detection system.
             </p>
           </div>
-          
         </div>
       </section>
 
@@ -90,25 +113,42 @@ const Home = () => {
       <section className="detection-section">
         <div className="section-container">
           <h2 className="section-title">Disease Detection Services</h2>
-          <p className="section-subtitle">Choose a service to get started with AI-powered diagnosis</p>
+          <p className="section-subtitle">
+            {isAuthenticated 
+              ? 'Choose a service to get started with AI-powered diagnosis'
+              : 'Please sign up to access our AI-powered diagnosis services'}
+          </p>
           
-          <div className="cards-grid">
-            {diseaseCards.map((card) => (
-              <div 
-                key={card.id} 
-                className="disease-card"
-                onClick={() => handleCardClick(card)}
-              >
-                <div className="card-icon" style={{background: card.gradient}}>
-                  <span>{card.icon}</span>
+          {!isAuthenticated ? (
+            <div className="auth-required-box">
+              <div className="auth-icon">🔒</div>
+              <h3 className="auth-title">Authentication Required</h3>
+              <p className="auth-message">
+                Please sign up or log in to access our disease detection services and contribute to advancing healthcare technology.
+              </p>
+              <button className="auth-signup-btn" onClick={handleSignUpClick}>
+                Sign Up / Log In
+              </button>
+            </div>
+          ) : (
+            <div className="cards-grid">
+              {diseaseCards.map((card) => (
+                <div 
+                  key={card.id} 
+                  className="disease-card"
+                  onClick={() => handleCardClick(card)}
+                >
+                  <div className="card-icon" style={{background: card.gradient}}>
+                    <img src={card.image} alt={card.name} />
+                  </div>
+                  <h3 className="card-title">{card.name}</h3>
+                  <button className="card-btn">
+                    {user?.role === 'hospital' ? 'Contribute →' : 'Get Started →'}
+                  </button>
                 </div>
-                <h3 className="card-title">{card.name}</h3>
-                <button className="card-btn">
-                  {user?.role === 'hospital' ? 'Contribute →' : 'Get Started →'}
-                </button>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

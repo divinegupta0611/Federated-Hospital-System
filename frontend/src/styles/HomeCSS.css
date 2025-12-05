@@ -467,3 +467,161 @@
     gap: 2.5rem;
   }
 }
+/* Add these styles to your existing HomeCSS.css file */
+
+/* Authentication Required Box */
+.auth-required-box {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.auth-icon {
+  font-size: 4rem;
+  margin-bottom: 1.5rem;
+  animation: pulse 2s infinite;
+}
+
+.auth-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 1rem;
+}
+
+.auth-message {
+  font-size: 1.1rem;
+  color: #4a5568;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.auth-signup-btn {
+  background: linear-gradient(135deg, #2d6a4f 0%, #1b4332 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(45, 106, 79, 0.3);
+}
+
+.auth-signup-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(45, 106, 79, 0.4);
+  background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%);
+}
+
+.auth-signup-btn:active {
+  transform: translateY(-1px);
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Responsive Design for Auth Box */
+@media (max-width: 768px) {
+  .auth-required-box {
+    margin: 2rem 1rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .auth-icon {
+    font-size: 3rem;
+  }
+
+  .auth-title {
+    font-size: 1.5rem;
+  }
+
+  .auth-message {
+    font-size: 1rem;
+    padding: 0;
+  }
+
+  .auth-signup-btn {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-required-box {
+    padding: 1.5rem 1rem;
+  }
+
+  .auth-icon {
+    font-size: 2.5rem;
+  }
+
+  .auth-title {
+    font-size: 1.3rem;
+  }
+
+  .auth-message {
+    font-size: 0.95rem;
+  }
+}
+/* Add this to your existing HomeCSS.css file */
+
+/* Update the card-icon styling to accommodate images */
+.card-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+/* Style for images inside card-icon */
+.card-icon img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+/* Optional: Remove filter if you want to keep original image colors */
+.card-icon img.keep-original-color {
+  filter: none;
+}
+
+/* Hover effect for card-icon */
+.disease-card:hover .card-icon {
+  transform: scale(1.1);
+}
+
+/* If the emoji icon span is still being used elsewhere, keep this */
+.card-icon span {
+  font-size: 2.5rem;
+}
