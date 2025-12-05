@@ -1,7 +1,7 @@
-## Federated-Hospital-System
+# Federated-Hospital-System
 A privacy-preserving federated learning platform for collaborative disease detection across hospitals without sharing sensitive patient data.
 
-## Overview
+# Overview
 The Federated Hospital System revolutionizes collaborative medical AI by enabling hospitals to contribute to machine learning models without exposing sensitive patient data. Using federated learning, each hospital trains models locally in their browser, and only encrypted model weights are shared—never the raw patient data.
 🔬 Supported Disease Detections:
 
@@ -12,35 +12,35 @@ Parkinson's Disease Detection - Neurological pattern recognition
 Breast Cancer Detection - Tumor classification
 
 
-## Key Features
-# Privacy-First Architecture
+# Key Features
+## Privacy-First Architecture
 
 Zero Data Sharing: All training happens in the browser using TensorFlow.js
 Local Model Training: Patient data never leaves the hospital's computer
 Encrypted Weight Exchange: Only model parameters are shared, not raw data
 HIPAA-Compliant Design: Built with healthcare privacy regulations in mind
 
-# Advanced AI Capabilities
+## Advanced AI Capabilities
 
 Real-time Predictions: Instant disease risk assessment
 Multi-Disease Detection: 5 different disease prediction models
 Model Accuracy Tracking: Transparent accuracy metrics for each model
 Federated Learning: Collaborative model improvement without data centralization
 
-# Dual User Roles
+## Dual User Roles
 
 Doctors: Access all disease detection services for patient diagnosis
 Hospitals: Contribute training data to improve models collectively
 Role-Based Navigation: Customized experience based on user type
 
-# Professional Interface
+## Professional Interface
 
 Modern UI/UX: Clean, intuitive design with smooth animations
 Responsive Design: Works seamlessly on desktop, tablet, and mobile
 Real-Time Console: Live training logs and metrics visualization
 Progress Tracking: Visual feedback during model training
 
-# Training Features
+## Training Features
 
 CSV Data Upload: Easy dataset contribution via file upload
 Data Validation: Automatic format and quality checks
@@ -87,21 +87,21 @@ Data validation with detailed feedback
 Privacy guarantees clearly communicated
 
 
-## Impact & Significance
-# Healthcare Impact
+# Impact & Significance
+## Healthcare Impact
 
 Democratizes AI in Healthcare: Small hospitals can benefit from collective intelligence
 Accelerates Medical Research: Faster model improvements through collaboration
 Improves Diagnostic Accuracy: More training data → better predictions
 Reduces Healthcare Costs: Early detection prevents expensive treatments
 
-# Technical Impact
+## Technical Impact
 
 Advances Federated Learning: Practical implementation of cutting-edge ML
 Sets Privacy Standards: Model for future healthcare AI systems
 Open Source Contribution: Can inspire similar privacy-preserving systems
 
-# Social Impact
+## Social Impact
 
 Protects Patient Privacy: Maintains trust in digital healthcare
 Enables Cross-Border Collaboration: Hospitals globally can contribute
